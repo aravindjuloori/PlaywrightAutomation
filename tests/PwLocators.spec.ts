@@ -23,7 +23,7 @@ test("Verify Playwright getByAltText",async({page})=>{
 
 //page.getByText() to locate by text content.Its just like non-interactive elements like div,span,p,h2
 
-test("Verify playwright getByText",async({page})=>{
+test.only("Verify playwright getByText",async({page})=>{
 
    await page.goto("https://rahulshettyacademy.com/locatorspractice/");
 
@@ -46,7 +46,7 @@ test("Verify by getByRole",async({page})=>{
 
 //4.page.getByLable()-Locate by using the lable text
 
-test.only("Verify by using getByLabel",async({page})=>{
+test("Verify by using getByLabel",async({page})=>{
 
     await page.goto("http://127.0.0.1:5500/tests/app.html");
     await page.getByLabel("Email Address:").fill("aravind.juloori@gmail.com");
@@ -69,7 +69,7 @@ test("Verify by using the getByPlaceHolder",async({page})=>{
 //6.page.getByTitle()
 test("Verify by using getByTitle",async({page})=>{
 
-    await page.goto("file:///C:/Users/Aravind/Downloads/app.html")
+   await page.goto("http://127.0.0.1:5500/tests/app.html") 
    const title:Locator=page.getByTitle("Home page link");
 //    await title.click();
    await expect(title).toHaveText("Home");
