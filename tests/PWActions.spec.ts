@@ -1,10 +1,9 @@
 import{test,expect,Locator} from "@playwright/test"
 
+test("Verify test input Actions",async({page})=>{
 
-test("Verify Text Input Actions",async({page})=>{
-
-    await page.goto("https://testautomationpractice.blogspot.com/");
-    const textBox:Locator=page.locator("#name");
+     await page.goto("https://testautomationpractice.blogspot.com/");
+     const textBox:Locator=page.locator("input#name");
   
     await expect(textBox).toBeVisible();  // to check the visiblity of the webElement
     await expect(textBox).toBeEnabled(); // to check the element is enabled or not
@@ -12,31 +11,32 @@ test("Verify Text Input Actions",async({page})=>{
      const maxLength:any=await textBox.getAttribute("maxlength");
      console.log("MaxLength: ",maxLength);
      expect(maxLength).toBe('15');
-    
-    await textBox.fill("Joel Kennedy");
-     const enteredvalue:string=await textBox.inputValue();
-    console.log("input value of the first name:",enteredvalue);
-    expect(enteredvalue).toBe("Joel Kennedy");
-    
-    //  expect(enteredvalue).toBe("Joel kennedy");
-    await page.waitForTimeout(3000);
+
+     await textBox.fill("Joel Kennedy");
+     const enteredText:string=await textBox.inputValue();
+    console.log("input value of the first name:",enteredText);
+     expect(enteredText).toBe("Joel Kennedy");
+
+     await page.waitForTimeout(4000);
 
 })
 
-test("Verify radio buttons Actions",async({page})=>{
-
+test.only("Verify radio buttons Actions",async({page})=>{
     await page.goto("https://testautomationpractice.blogspot.com/");
     const maleradio:Locator=page.locator("#male");
-    expect(maleradio).toBeVisible();
-    expect(maleradio).toBeEnabled();
+    await expect(maleradio).toBeVisible();
+    await expect(maleradio).toBeEnabled();
 
-     expect(await maleradio.isChecked()).toBe(false); //this will check the button is selected by default or not
-    await maleradio.check(); // this will select the radio button
+    expect(await maleradio.isChecked()).toBe(false);
+    await maleradio.check();
     expect(await maleradio.isChecked()).toBe(true);
-    await expect(maleradio).toBeChecked();
+     await expect(maleradio).toBeChecked();
     await page.waitForTimeout(3000);
 
+
 })
+
+
 
 test.only("Verify Checkbox Actions",async({page})=>{
 

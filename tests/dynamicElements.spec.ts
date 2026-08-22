@@ -4,7 +4,7 @@ import{test,expect,Locator} from "@playwright/test"
 
     await page.goto("https://testautomationpractice.blogspot.com/");
     for(let i=0;i<=5;i++){
-
+      //using xpath
       let button:Locator=page.locator("//button[text()='START' or text()='STOP']");
 
       //click the button
@@ -30,7 +30,7 @@ import{test,expect,Locator} from "@playwright/test"
     test("using the getByrole ",async({page})=>{
       await page.goto("https://testautomationpractice.blogspot.com/");
     for(let i=0;i<=5;i++){
-        //locate the button using css locator 
+        //locate the button using GetByRole locator 
       let button:Locator=page.getByRole('button',{name:/START|STOP/});
 
       //click the button
